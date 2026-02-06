@@ -1,0 +1,760 @@
+--[[
+
+Ts Code Was Deobfuscated Using Slayerson âœžâœž Private Deobf
+processed time. 622.94 Ms
+
+Obfuscator: v1.0.0 https://wearedevs.net/obfuscator
+
+-- ]]
+
+repeat task.wait() until game:IsLoaded()
+
+local Players = game:GetService("Players")
+local TweenService = game:GetService("TweenService")
+local RunService = game:GetService("RunService")
+local LocalPlayer = Players.LocalPlayer
+
+local CORRECT_KEY = "DANONTOP"
+local GET_KEY_LINK = "https://discord.gg/jNCaMqgBdt"
+
+getgenv().KEY_PASSED = false
+
+local Gui = Instance.new("ScreenGui", game.CoreGui)
+Gui.Name = "DAN_RGB_KEY"
+Gui.ResetOnSpawn = false
+
+local Main = Instance.new("Frame", Gui)
+Main.Size = UDim2.new(0, 380, 0, 240)
+Main.Position = UDim2.new(0.5, -190, 0.5, -120)
+Main.BackgroundColor3 = Color3.fromRGB(15,15,15)
+Main.BorderSizePixel = 0
+Main.Active = true
+Main.Draggable = true
+
+Instance.new("UICorner", Main).CornerRadius = UDim.new(0, 14)
+
+local Glow = Instance.new("UIStroke", Main)
+Glow.Thickness = 2
+
+local hue = 0
+RunService.RenderStepped:Connect(function()
+    hue = (hue + 0.002) % 1
+    Glow.Color = Color3.fromHSV(hue, 1, 1)
+end)
+
+local Title = Instance.new("TextLabel", Main)
+Title.Size = UDim2.new(1,0,0,50)
+Title.BackgroundTransparency = 1
+Title.Text = "ðŸ”’ DAN HUB KEY SYSTEM"
+Title.Font = Enum.Font.GothamBold
+Title.TextSize = 20
+Title.TextColor3 = Color3.fromRGB(255,255,255)
+
+local Box = Instance.new("TextBox", Main)
+Box.Size = UDim2.new(0.85,0,0,42)
+Box.Position = UDim2.new(0.075,0,0.35,0)
+Box.PlaceholderText = "ENTER KEY"
+Box.Text = ""
+Box.Font = Enum.Font.Gotham
+Box.TextSize = 14
+Box.BackgroundColor3 = Color3.fromRGB(30,30,30)
+Box.TextColor3 = Color3.fromRGB(255,255,255)
+Box.ClearTextOnFocus = false
+Instance.new("UICorner", Box).CornerRadius = UDim.new(0,10)
+
+local Verify = Instance.new("TextButton", Main)
+Verify.Size = UDim2.new(0.4,0,0,38)
+Verify.Position = UDim2.new(0.075,0,0.65,0)
+Verify.Text = "VERIFY"
+Verify.Font = Enum.Font.GothamBold
+Verify.TextSize = 14
+Verify.TextColor3 = Color3.fromRGB(255,255,255)
+Verify.BackgroundColor3 = Color3.fromRGB(40,40,40)
+Instance.new("UICorner", Verify).CornerRadius = UDim.new(0,10)
+
+local GetKey = Instance.new("TextButton", Main)
+GetKey.Size = UDim2.new(0.4,0,0,38)
+GetKey.Position = UDim2.new(0.525,0,0.65,0)
+GetKey.Text = "GET KEY"
+GetKey.Font = Enum.Font.GothamBold
+GetKey.TextSize = 14
+GetKey.TextColor3 = Color3.fromRGB(255,255,255)
+GetKey.BackgroundColor3 = Color3.fromRGB(40,40,40)
+Instance.new("UICorner", GetKey).CornerRadius = UDim.new(0,10)
+
+for _,btn in pairs({Verify, GetKey}) do
+    btn.MouseEnter:Connect(function()
+        TweenService:Create(btn, TweenInfo.new(0.2), {
+            BackgroundColor3 = Color3.fromRGB(70,70,70)
+        }):Play()
+    end)
+    btn.MouseLeave:Connect(function()
+        TweenService:Create(btn, TweenInfo.new(0.2), {
+            BackgroundColor3 = Color3.fromRGB(40,40,40)
+        }):Play()
+    end)
+end
+
+local function Shake()
+    for i = 1,8 do
+        Main.Position += UDim2.new(0, (i%2==0 and -6 or 6),0,0)
+        task.wait(0.02)
+    end
+end
+
+Verify.MouseButton1Click:Connect(function()
+    if Box.Text == CORRECT_KEY then
+        getgenv().KEY_PASSED = true
+
+        TweenService:Create(Main, TweenInfo.new(0.5), {
+            BackgroundTransparency = 1
+        }):Play()
+
+        for _,v in pairs(Main:GetChildren()) do
+            if v:IsA("TextLabel") or v:IsA("TextButton") or v:IsA("TextBox") then
+                TweenService:Create(v, TweenInfo.new(0.5), {
+                    TextTransparency = 1,
+                    BackgroundTransparency = 1
+                }):Play()
+            end
+        end
+
+        task.wait(0.6)
+        Gui:Destroy()
+    else
+        Box.Text = ""
+        Box.PlaceholderText = "WRONG KEY!"
+        Shake()
+    end
+end)
+
+GetKey.MouseButton1Click:Connect(function()
+    if setclipboard then
+        setclipboard(GET_KEY_LINK)
+    end
+end)
+
+repeat task.wait() until getgenv().KEY_PASSED
+
+local SpeedHub = loadstring(game:HttpGet('https://raw.githubusercontent.com/memejames/elerium-v2-ui-library//main/Library', true))():AddWindow('DAN HUB | LEGENDS OF SPEED', {
+    main_color = Color3.fromRGB(0, 0, 0),
+    min_size = Vector2.new(415, 250),
+    can_resize = false,
+})
+local HomeTab = SpeedHub:AddTab('Home')
+local AutoFarmTab = SpeedHub:AddTab('Auto Farm')
+local TeleportTab = SpeedHub:AddTab('Teleports')
+local OpTab = SpeedHub:AddTab('Op Stuff')
+local MiscTab = SpeedHub:AddTab('Misc')
+local SettingsTab = SpeedHub:AddTab('Settings')
+
+HomeTab:Show()
+HomeTab:AddLabel('MADE BY SGA ')
+HomeTab:AddLabel('If you have any suggestions please let us know')
+HomeTab:AddLabel(' OWENER OF DAN HUB IS SGA!')
+
+local IsAutoOrbEnabled = false
+local SelectedOrb = 'Orange Orb'
+local OrbSelector = AutoFarmTab:AddDropdown('Select Orb', function(OrbOption)
+    SelectedOrb = OrbOption
+end)
+
+OrbSelector:Add('Blue Orb')
+OrbSelector:Add('Ethereal Orb')
+OrbSelector:Add('Gem')
+OrbSelector:Add('Infernal Gem')
+OrbSelector:Add('Orange Orb')
+OrbSelector:Add('Red Orb')
+OrbSelector:Add('Yellow Orb')
+AutoFarmTab:AddSwitch('Auto Orb', function(AutoOrbToggle)
+    IsAutoOrbEnabled = AutoOrbToggle
+
+    if AutoOrbToggle then
+        spawn(function()
+            local OrbEvent = game:GetService('ReplicatedStorage').rEvents:FindFirstChild('orbEvent')
+
+            if OrbEvent then
+                while IsAutoOrbEnabled do
+                    OrbEvent:FireServer('collectOrb', SelectedOrb, 'City')
+                    wait(0)
+                end
+            end
+        end)
+    end
+end)
+
+local IsAutoHoopEnabled = false
+local HoopRenderConnection = nil
+
+AutoFarmTab:AddSwitch('Auto Hoop', function(AutoHoopToggle)
+    IsAutoHoopEnabled = AutoHoopToggle
+
+    if AutoHoopToggle then
+        HoopRenderConnection = game:GetService('RunService').RenderStepped:Connect(function()
+            local HoopCollection = game.Workspace.Hoops
+            local CharacterRootPart = game.Players.LocalPlayer.Character:FindFirstChild('HumanoidRootPart')
+
+            if CharacterRootPart then
+                local HoopIndex, HoopValue, HoopKey = pairs(HoopCollection:GetChildren())
+
+                while true do
+                    local UnusedVariable
+
+                    HoopKey, UnusedVariable = HoopIndex(HoopValue, HoopKey)
+
+                    if HoopKey == nil then
+                        break
+                    end
+                    if UnusedVariable.Name == 'Hoop' then
+                        UnusedVariable.CFrame = CharacterRootPart.CFrame
+                    end
+                end
+            end
+        end)
+    elseif HoopRenderConnection then
+        HoopRenderConnection:Disconnect()
+
+        HoopRenderConnection = nil
+    end
+end)
+
+local UnusedBoolean = false
+
+AutoFarmTab:AddSwitch('Auto Rebirth', function(UnusedParameter)
+    UnusedBoolean = UnusedParameter
+
+    if UnusedParameter then
+        spawn(function()
+            local RebirthEvent = game:GetService('ReplicatedStorage').rEvents:FindFirstChild('rebirthEvent')
+
+            if RebirthEvent then
+                while UnusedBoolean do
+                    RebirthEvent:FireServer('rebirthRequest')
+                    wait(0.1)
+                end
+            end
+        end)
+    end
+end)
+
+local UnusedBoolean2 = false
+
+AutoFarmTab:AddSwitch('Auto Race', function(UnusedParameter2)
+    UnusedBoolean2 = UnusedParameter2
+end)
+spawn(function()
+    while task.wait() do
+        if UnusedBoolean2 then
+            pcall(function()
+                if game.Players.LocalPlayer.PlayerGui.gameGui.raceJoinLabel.Visible then
+                    game:GetService('ReplicatedStorage').rEvents.raceEvent:FireServer('joinRace')
+                end
+
+                local MapIndex, MapValue, MapKey = pairs(game:GetService('Workspace').raceMaps:GetChildren())
+
+                while true do
+                    local UnusedVariable2
+
+                    MapKey, UnusedVariable2 = MapIndex(MapValue, MapKey)
+
+                    if MapKey == nil then
+                        break
+                    end
+                    if game.Players.LocalPlayer.currentMap.Value == UnusedVariable2.mapValue.Value then
+                        repeat
+                            task.wait()
+                        until game.Players.LocalPlayer.PlayerGui.gameGui.countdownLabels.goLabel.Visible
+
+                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = UnusedVariable2.finishPart.CFrame
+                    end
+                end
+            end)
+        end
+    end
+end)
+OpTab:AddLabel('Note: When using the Infinite Orb toggle')
+OpTab:AddLabel('It may slow down your auto rebirth / auto hoop')
+
+local UnusedBoolean3 = false
+local OrbOptions = {
+    'Blue Orb',
+    'Ethereal Orb',
+    'Gem',
+    'Infernal Gem',
+    'Orange Orb',
+    'Red Orb',
+    'Yellow Orb',
+}
+
+OpTab:AddSwitch('Infinite Orb', function(OrbParameter)
+    UnusedBoolean3 = OrbParameter
+
+    if OrbParameter then
+        spawn(function()
+            local OrbEvent2 = game:GetService('ReplicatedStorage').rEvents:FindFirstChild('orbEvent')
+
+            if OrbEvent2 then
+                while UnusedBoolean3 do
+                    for LoopCounter = 1, 1000 do
+                        local OrbOptionIndex, OrbOptionValue, OrbOptionKey = pairs(OrbOptions)
+
+                        while true do
+                            local UnusedVariable3
+
+                            OrbOptionKey, UnusedVariable3 = OrbOptionIndex(OrbOptionValue, OrbOptionKey)
+
+                            if OrbOptionKey == nil then
+                                break
+                            end
+
+                            OrbEvent2:FireServer('collectOrb', UnusedVariable3, 'City')
+                        end
+                    end
+
+                    wait(0.001)
+                end
+            end
+        end)
+    end
+end)
+TeleportTab:AddButton('Spawn City', function()
+    local TeleportLocation1 = CFrame.new(-557.4857177734375, 4.126865386962891, 417.6131591796875)
+
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = TeleportLocation1
+end)
+TeleportTab:AddButton('Frost Course', function()
+    local TeleportLocation2 = CFrame.new(2022.6805419921875, 0.9335981607437134, 984.478515625)
+
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = TeleportLocation2
+end)
+TeleportTab:AddButton('Pirate Course', function()
+    local TeleportLocation3 = CFrame.new(-1611.5206298828125, 18.597841262817383, 4939.548828125)
+
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = TeleportLocation3
+end)
+TeleportTab:AddButton('Snow City', function()
+    local TeleportLocation4 = CFrame.new(-866.3868408203125, 4.176865100860596, 2165.70654296875)
+
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = TeleportLocation4
+end)
+TeleportTab:AddButton('Magma City', function()
+    local TeleportLocation5 = CFrame.new(1618.0010986328125, 4.226873397827148, 4328.55029296875)
+
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = TeleportLocation5
+end)
+TeleportTab:AddButton('Legends Highway', function()
+    local TeleportLocation6 = CFrame.new(3742.88037109375, 71.70680236816406, 5581.55224609375)
+
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = TeleportLocation6
+end)
+MiscTab:AddLabel('If you use the Auto Walk toggle')
+MiscTab:AddLabel('i reccomend you set your jump power to 0')
+
+local FreeGiftRemote = game:GetService('ReplicatedStorage').rEvents.freeGiftClaimRemote
+
+MiscTab:AddSwitch('Auto Claim Gifts', function(GiftParameter)
+    if GiftParameter then
+        for LoopCounter2 = 1, 10 do
+            local UnusedVariable4 = LoopCounter2
+
+            pcall(function()
+                FreeGiftRemote:InvokeServer('claimGift', UnusedVariable4)
+            end)
+        end
+    end
+end)
+
+local ReplicatedStorageService = game:GetService('ReplicatedStorage')
+local OpenFortuneWheelRemote = ReplicatedStorageService.rEvents.openFortuneWheelRemote
+local FortuneWheelChances = ReplicatedStorageService.fortuneWheelChances['Fortune Wheel']
+
+MiscTab:AddSwitch('Auto Spin Wheel', function(FortuneWheelParameter)
+    if FortuneWheelParameter then
+        pcall(function()
+            OpenFortuneWheelRemote:InvokeServer('openFortuneWheel', FortuneWheelChances)
+        end)
+    end
+end)
+
+local CodeRemote = game:GetService('ReplicatedStorage').rEvents.codeRemote
+local CodeOptions = {
+    'swiftjungle1000',
+    'speedchampion000',
+    'racer300',
+    'SPRINT250',
+    'hyper250',
+    'legends500',
+    'sparkles300',
+    'Launch200',
+}
+
+MiscTab:AddSwitch('Auto Claim Codes', function(CodeParameter)
+    if CodeParameter then
+        local CodeOptionIndex, CodeOptionValue, CodeOptionKey = ipairs(CodeOptions)
+
+        while true do
+            local UnusedVariable5
+
+            CodeOptionKey, UnusedVariable5 = CodeOptionIndex(CodeOptionValue, CodeOptionKey)
+
+            if CodeOptionKey == nil then
+                break
+            end
+
+            pcall(function()
+                CodeRemote:InvokeServer(UnusedVariable5)
+            end)
+        end
+    end
+end)
+
+local PlayersService = game:GetService('Players')
+
+game:GetService('TweenService')
+game:GetService('RunService')
+
+local WorkspaceService = game:GetService('Workspace')
+local ReplicatedStorageService2 = game:GetService('ReplicatedStorage')
+local LocalPlayer = PlayersService.LocalPlayer
+local CharacterModel = LocalPlayer.Character or LocalPlayer.CharacterAdded:Wait()
+local CharacterPart = CharacterModel
+local Humanoid = CharacterModel.WaitForChild(CharacterPart, 'Humanoid')
+local CharacterPart2 = CharacterModel
+local HumanoidRootPart = CharacterModel.WaitForChild(CharacterPart2, 'HumanoidRootPart')
+local ChangeSpeedJumpRemote = ReplicatedStorageService2.rEvents.changeSpeedJumpRemote
+local Location1 = Vector3.new(3628.41, 218.15, 7238.12)
+local Location2 = Vector3.new(5172.36, 183.9, 7138.81)
+local UnusedBoolean4 = false
+local UnusedString = 'A'
+local PathfindingService = game:GetService('PathfindingService')
+local UnusedBoolean5 = false
+
+local function Function1(FunctionParameter)
+    local RaycastParams = RaycastParams.new()
+
+    RaycastParams.FilterType = Enum.RaycastFilterType.Blacklist
+    RaycastParams.FilterDescendantsInstances = {CharacterModel}
+
+    local RaycastResult = WorkspaceService:Raycast(FunctionParameter + Vector3.new(0, 50, 0), Vector3.new(0, -100, 0), RaycastParams)
+
+    if RaycastResult then
+        return RaycastResult.Position + Vector3.new(0, 5, 0)
+    else
+        return FunctionParameter
+    end
+end
+local function Function2(FunctionParameter2, FunctionParameter3)
+    return (HumanoidRootPart.Position - FunctionParameter2).Magnitude <= FunctionParameter3
+end
+local function Function3(FunctionParameter4, LoopCounter)
+    if UnusedBoolean4 then
+        local FunctionResult = Function1(FunctionParameter4)
+        local Path = PathfindingService:CreatePath({
+            AgentRadius = 2,
+            AgentHeight = 5,
+            AgentCanJump = true,
+            WaypointSpacing = 4,
+        })
+        local PathComputeResult, LoopCounter = pcall(function()
+            Path:ComputeAsync(HumanoidRootPart.Position, FunctionResult)
+        end)
+
+        if PathComputeResult and Path.Status == Enum.PathStatus.Success then
+            local PathStatus = Path
+            local Waypoints = Path.GetWaypoints(PathStatus)
+            local WaypointIndex, WaypointValue, WaypointKey = pairs(Waypoints)
+
+            while true do
+                local UnusedVariable6
+
+                WaypointKey, UnusedVariable6 = WaypointIndex(WaypointValue, WaypointKey)
+
+                if WaypointKey == nil or not UnusedBoolean4 then
+                    break
+                end
+                if UnusedVariable6.Action == Enum.PathWaypointAction.Jump then
+                    Humanoid.Jump = true
+                end
+
+                Humanoid:MoveTo(UnusedVariable6.Position)
+
+                if not Humanoid.MoveToFinished:Wait(8) then
+                    wait(0.1)
+                end
+                if Function2(FunctionParameter4, 10) then
+                    return true
+                end
+            end
+        else
+            Humanoid:MoveTo(FunctionResult)
+            Humanoid.MoveToFinished:Wait(10)
+        end
+
+        return Function2(FunctionParameter4, 10)
+    end
+end
+
+MiscTab:AddSwitch('Auto Walk (Grind Steps)', function(FunctionParameter5)
+    if FunctionParameter5 then
+        pcall(function()
+            ChangeSpeedJumpRemote:InvokeServer('changeSpeed', 10000)
+        end)
+
+        if HumanoidRootPart and HumanoidRootPart.Parent then
+            local FunctionResult2 = Function1(Location1)
+
+            HumanoidRootPart.CFrame = CFrame.new(FunctionResult2)
+            UnusedString = 'A'
+            UnusedBoolean4 = true
+            UnusedBoolean5 = false
+        end
+
+        spawn(function()
+            while UnusedBoolean4 do
+                if CharacterModel and (CharacterModel.Parent and (HumanoidRootPart and HumanoidRootPart.Parent)) then
+                    if UnusedBoolean5 then
+                        wait(0.5)
+                    else
+                        local UnusedVariable7, UnusedVariable8
+
+                        if UnusedString ~= 'A' then
+                            UnusedVariable7 = Location1
+                            UnusedVariable8 = 'A'
+                        else
+                            UnusedVariable7 = Location2
+                            UnusedVariable8 = 'B'
+                        end
+
+                        UnusedBoolean5 = true
+
+                        if Function3(UnusedVariable7, UnusedVariable8) then
+                            UnusedString = UnusedVariable8
+                            UnusedBoolean5 = false
+                        else
+                            wait(1)
+
+                            UnusedBoolean5 = false
+                        end
+                    end
+                else
+                    wait(0.1)
+                end
+            end
+        end)
+    else
+        UnusedBoolean4 = false
+        UnusedBoolean5 = false
+
+        pcall(function()
+            ChangeSpeedJumpRemote:InvokeServer('changeSpeed', 10000)
+        end)
+
+        if Humanoid then
+            Humanoid:MoveTo(HumanoidRootPart.Position)
+        end
+    end
+end)
+LocalPlayer.CharacterAdded:Connect(function(FunctionParameter6)
+    CharacterModel = FunctionParameter6
+    Humanoid = CharacterModel:WaitForChild('Humanoid')
+    HumanoidRootPart = CharacterModel:WaitForChild('HumanoidRootPart')
+
+    if UnusedBoolean4 then
+        pcall(function()
+            ChangeSpeedJumpRemote:InvokeServer('changeSpeed', 10000)
+        end)
+
+        local ParameterValue = Function1(Location1)
+
+        HumanoidRootPart.CFrame = CFrame.new(ParameterValue)
+        UnusedString = 'A'
+        UnusedBoolean5 = false
+    end
+end)
+
+local ReplicatedStorageService = game:GetService('ReplicatedStorage')
+local PlayersService = game:GetService('Players')
+local TradingEvent = ReplicatedStorageService.rEvents.tradingEvent
+local UnusedValue = nil
+
+MiscTab:AddSwitch('Trade Everyone (Annoy)', function(FunctionParameter)
+    if FunctionParameter then
+        UnusedValue = game:GetService('RunService').Heartbeat:Connect(function()
+            local PlayerList = PlayersService
+            local PlayerIndex, PlayerKey, PlayerValue = ipairs(PlayerList:GetPlayers())
+
+            while true do
+                local BooleanFlag
+
+                PlayerValue, BooleanFlag = PlayerIndex(PlayerKey, PlayerValue)
+
+                if PlayerValue == nil then
+                    break
+                end
+                if BooleanFlag ~= PlayersService.LocalPlayer then
+                    pcall(function()
+                        TradingEvent:FireServer('sendTradeRequest', BooleanFlag)
+                    end)
+                end
+            end
+
+            wait(0.5)
+        end)
+    else
+        if UnusedValue then
+            UnusedValue:Disconnect()
+
+            UnusedValue = nil
+        end
+
+        pcall(function()
+            TradingEvent:FireServer('cancelTrade')
+        end)
+    end
+end)
+SettingsTab:AddSlider('FPS Cap', function(Parameter1)
+    setfpscap(Parameter1)
+end, {
+    min = 30,
+    max = 240,
+    default = 60,
+    decimals = 0,
+})
+SettingsTab:AddSlider('Walkspeed', function(Parameter2)
+    local LocalPlayerInstance = game.Players.LocalPlayer
+
+    if LocalPlayerInstance.Character and LocalPlayerInstance.Character:FindFirstChild('Humanoid') then
+        LocalPlayerInstance.Character.Humanoid.WalkSpeed = Parameter2
+    end
+end, {
+    min = 16,
+    max = 1000,
+    default = 16,
+    decimals = 0,
+})
+SettingsTab:AddSlider('Jump Power', function(FunctionArgument)
+    local LocalPlayerReference = game.Players.LocalPlayer
+
+    if LocalPlayerReference.Character and LocalPlayerReference.Character:FindFirstChild('Humanoid') then
+        LocalPlayerReference.Character.Humanoid.JumpPower = FunctionArgument
+    end
+end, {
+    min = 50,
+    max = 1500,
+    default = 50,
+    decimals = 0,
+})
+
+local FalseValue = false
+local EmptyTable = {}
+
+SettingsTab:AddSwitch('Highlight Barriers', function(CallbackParameter)
+    FalseValue = CallbackParameter
+
+    if CallbackParameter then
+        local DescendantIndex, DescendantKey, DescendantValue = pairs(game.Workspace:GetDescendants())
+
+        while true do
+            local UnusedVariable
+
+            DescendantValue, UnusedVariable = DescendantIndex(DescendantKey, DescendantValue)
+
+            if DescendantValue == nil then
+                break
+            end
+            if UnusedVariable:IsA('BasePart') and (UnusedVariable.Name ~= 'Baseplate' and (not UnusedVariable:IsDescendantOf(game.Players.LocalPlayer.Character) and UnusedVariable.Transparency == 1)) then
+                UnusedVariable.Transparency = 0
+                UnusedVariable.Color = Color3.fromRGB(0, 0, 255)
+
+                local HighlightInstance = Instance.new('Highlight')
+
+                HighlightInstance.FillColor = Color3.fromRGB(0, 0, 255)
+                HighlightInstance.OutlineColor = Color3.fromRGB(0, 0, 128)
+                HighlightInstance.FillTransparency = 0
+                HighlightInstance.OutlineTransparency = 0
+                HighlightInstance.Parent = UnusedVariable
+
+                table.insert(EmptyTable, {
+                    part = UnusedVariable,
+                    highlight = HighlightInstance,
+                })
+            end
+        end
+    else
+        local TableKey, TableValue, TableIndex = pairs(EmptyTable)
+
+        while true do
+            local PartContainer
+
+            TableIndex, PartContainer = TableKey(TableValue, TableIndex)
+
+            if TableIndex == nil then
+                break
+            end
+
+            local PartInstance = PartContainer.part
+            local HighlightObject = PartContainer.highlight
+
+            if PartInstance and (PartInstance.Parent and HighlightObject) then
+                PartInstance.Transparency = 1
+                PartInstance.Color = PartInstance.Color
+
+                HighlightObject:Destroy()
+            end
+        end
+
+        EmptyTable = {}
+    end
+end)
+
+local DisabledFlag = false
+local NilValue = nil
+
+SettingsTab:AddSwitch('Noclip', function(FunctionInput)
+    DisabledFlag = FunctionInput
+
+    local LocalPlayerObject = game.Players.LocalPlayer
+
+    if FunctionInput then
+        NilValue = game:GetService('RunService').Stepped:Connect(function()
+            if LocalPlayerObject.Character then
+                local CharacterDescendant, CharacterIndex, CharacterKey = pairs(LocalPlayerObject.Character:GetDescendants())
+
+                while true do
+                    local CharacterContainer
+
+                    CharacterKey, CharacterContainer = CharacterDescendant(CharacterIndex, CharacterKey)
+
+                    if CharacterKey == nil then
+                        break
+                    end
+                    if CharacterContainer:IsA('BasePart') then
+                        CharacterContainer.CanCollide = false
+                    end
+                end
+            end
+        end)
+    else
+        if NilValue then
+            NilValue:Disconnect()
+
+            NilValue = nil
+        end
+        if LocalPlayerObject.Character then
+            local CharacterValue, CharacterProperty, CharacterAttribute = pairs(LocalPlayerObject.Character:GetDescendants())
+
+            while true do
+                local UnusedReference
+
+                CharacterAttribute, UnusedReference = CharacterValue(CharacterProperty, CharacterAttribute)
+
+                if CharacterAttribute == nil then
+                    break
+                end
+                if UnusedReference:IsA('BasePart') then
+                    UnusedReference.CanCollide = true
+                end
+            end
+        end
+    end
+end)
